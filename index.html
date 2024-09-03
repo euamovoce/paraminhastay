@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você me ama?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff7f9; /* Cor de fundo rosa claro */
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo semitransparente branco */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            max-width: 90%;
+            margin: auto;
+        }
+        h1 {
+            color: #e91e63; /* Cor rosa */
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+        }
+        button {
+            padding: 14px 28px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #ff9eab; /* Cor rosa claro */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #e91e63; /* Cor rosa mais escura ao passar o mouse */
+            transform: scale(1.05); /* Efeito de escala no hover */
+        }
+        #message {
+            font-size: 20px;
+            margin-top: 30px;
+            color: #333; /* Cor do texto principal */
+            font-style: italic; /* Texto em itálico */
+        }
+        .heart {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #f44336; /* Cor vermelha */
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite alternate;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: #f44336; /* Cor vermelha */
+            border-radius: 50%;
+            transform: scale(0.8);
+            animation: heartbeat 1s infinite alternate;
+        }
+        .heart::before {
+            left: -20px;
+        }
+        .heart::after {
+            left: 20px;
+        }
+        @keyframes heartbeat {
+            to {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stay, você me ama?</h1>
+        <button id="yesBtn">Sim</button>
+        <button id="noBtn">Não</button>
+        <p id="message" style="display:none;"></p>
+    </div>
+    <div class="heart"></div>
+
+    <!-- Áudio -->
+    <audio id="audioSim" src="caminho/para/seu/audio.mp3"></audio>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const message = document.getElementById('message');
+        const audioSim = document.getElementById('audioSim');
+
+        noBtn.addEventListener('click', () => {
+            // Toca o áudio do YouTube quando clicar em "Não" (não é possível reproduzir diretamente do YouTube)
+            window.open('https://youtu.be/bsFBmMFxWAo?si=JrDJBcCdhHUOwW7Z', '_blank');
+
+            // Ou você pode tocar um áudio localmente
+            // audioSim.play();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            message.textContent = 'Eu também amo você 💖';
+            message.style.display = 'block';
+            message.style.color = '#e91e63'; /* Cor rosa para a resposta */
+
+            // Toca o áudio local quando clicar em "Sim"
+            audioSim.play();
+        });
+    </script>
+</body>
+</html>
